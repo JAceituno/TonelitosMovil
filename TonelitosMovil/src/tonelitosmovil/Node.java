@@ -48,11 +48,11 @@ public class Node {
         this.ID = ID;
     }
 
-    public List getRelations() {
+    public List getAristas() {
         return aristas;
     }
 
-    public void setRelations(List relations) {
+    public void setAristas(List relations) {
         this.aristas = relations;
     }
     
