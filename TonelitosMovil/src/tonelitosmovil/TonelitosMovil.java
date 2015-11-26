@@ -5,6 +5,8 @@
  */
 package tonelitosmovil;
 
+import java.util.Scanner;
+
 /**
  *
  * @author megarokr
@@ -15,7 +17,10 @@ public class TonelitosMovil {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+        
+        
+        
     }
     
 }
