@@ -87,7 +87,9 @@ public class Grafo {
             for (int i = 0; i < nodos.size(); i++) {
                 for (int j = 0; j < nodos.elementAt(i).getAristas().size(); j++) {
                     if (((Arista)nodos.elementAt(i).getAristas().elementAt(j).getValue()).getNodoFinal().getID() ==
-                            nodos.elementAt(nodeIndex).getID()){
+                            nodos.elementAt(nodeIndex).getID() 
+                            || ((Arista)nodos.elementAt(i).getAristas().elementAt(j).getValue()).getNodoInicial().getID() ==
+                            nodos.elementAt(nodeIndex).getID() ){
                         removeEdge(nodos.elementAt(nodeIndex), ((Arista)nodos.elementAt(i).getAristas().elementAt(j).getValue()));
                     }
                 }
