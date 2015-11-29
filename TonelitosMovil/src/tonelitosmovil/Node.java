@@ -5,13 +5,24 @@ public class Node {
     private Object value;
     private Node next;
     private int ID;
+    Coordenada coordenada;
     private List aristas = new List();
 
     public Node(Object value) {
         this.value = value;
     }
+    
+    public Node(Object value, Node next, int ID, Coordenada coordenada) {
+        this.value = value;
+        this.next = next;
+        this.ID = ID;
+        this.coordenada = coordenada;
+    }
 
     public Node() {
+        value = null;
+        coordenada.setX(-1);
+        coordenada.setY(-1);
     }
 
     public Object getValue() {
@@ -55,6 +66,10 @@ public class Node {
     public void setAristas(List relations) {
         this.aristas = relations;
     }
+
+    
+    
+    
     
     
     
