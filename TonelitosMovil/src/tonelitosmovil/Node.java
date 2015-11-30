@@ -6,6 +6,8 @@ public class Node {
     private Node next;
     private int ID;
     private List aristas = new List();
+    private long DijkstraNum = Integer.MAX_VALUE;
+    private List DijkstraPath = new List();
 
     public Node(Object value) {
         this.value = value;
@@ -54,6 +56,26 @@ public class Node {
 
     public void setAristas(List relations) {
         this.aristas = relations;
+    }    
+    
+    public long getDijkstraNum() {
+        return DijkstraNum;
+    }
+
+    public void setDijkstraNum(long DijkstraNum) {
+        this.DijkstraNum = DijkstraNum;
+    }
+    
+    public List getDijkstraPath(){
+        return DijkstraPath;
+    }
+    
+    public void setDijkstraPath(List DijkstraPath){
+        this.DijkstraPath = DijkstraPath;
+    }
+    
+    public void addToPath(Arista edge){
+        DijkstraPath.push_back(edge);
     }
     
     
