@@ -5,7 +5,7 @@ public class Node {
     private Object value;
     private Node next;
     private int ID;
-    Coordenada coordenada;
+    private Coordenada coordenada;
     private List aristas = new List();
     private long DijkstraNum = Integer.MAX_VALUE;
     private List DijkstraPath = new List();
@@ -29,6 +29,14 @@ public class Node {
 
     public Object getValue() {
         return value;
+    }
+
+    public Coordenada getCoordenada() {
+        return coordenada;
+    }
+
+    public void setCoordenada(Coordenada coordenada) {
+        this.coordenada = coordenada;
     }
 
     public void setValue(Object value) {

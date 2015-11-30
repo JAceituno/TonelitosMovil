@@ -16,6 +16,10 @@ public class Grafo {
     public Grafo(List nodos) {
         this.nodos = nodos;
     }
+    
+    public Grafo(){
+        nodos = new List();
+    }
 
     public List getNodos() {
         return nodos;

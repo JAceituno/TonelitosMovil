@@ -5,6 +5,8 @@
  */
 package tonelitosmovil;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -36,9 +38,23 @@ public class Tonelitos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_relations = new javax.swing.JDialog();
         jb_addImage = new javax.swing.JButton();
-        jl_image = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jp_graphics = new javax.swing.JPanel();
+        jl_image = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jd_relationsLayout = new javax.swing.GroupLayout(jd_relations.getContentPane());
+        jd_relations.getContentPane().setLayout(jd_relationsLayout);
+        jd_relationsLayout.setHorizontalGroup(
+            jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_relationsLayout.setVerticalGroup(
+            jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,30 +72,58 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
 
+        jp_graphics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_graphicsMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_graphicsLayout = new javax.swing.GroupLayout(jp_graphics);
+        jp_graphics.setLayout(jp_graphicsLayout);
+        jp_graphicsLayout.setHorizontalGroup(
+            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_graphicsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jp_graphicsLayout.setVerticalGroup(
+            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_graphicsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jButton2.setText("Add Relation");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(344, 344, 344)
+                .addGap(150, 150, 150)
+                .addComponent(jButton2)
+                .addGap(113, 113, 113)
                 .addComponent(jb_addImage)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(214, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(275, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jp_graphics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_addImage)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(25, 25, 25))
         );
 
@@ -138,6 +182,29 @@ public class Tonelitos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jp_graphicsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_graphicsMouseClicked
+
+        int x = evt.getX();
+        int y = evt.getY();
+        if (evt.isMetaDown()){
+            // draw.clearRect(x-10, y-10, 60, 60); no
+            
+        }else{
+            
+            /*
+            
+            // incluir todo esto en el metodo refresh()
+            draw.setColor(red);
+            draw.drawOval(x-10, y-10, 25, 25);
+            draw.fillOval(x-10, y-10, 25, 25);
+            */
+            grafo.getNodos().push_back(new Node());
+            grafo.getNodos().elementAt(contadorNodos).setCoordenada(new Coordenada (x-10,y-10));
+        }
+        
+        
+    }//GEN-LAST:event_jp_graphicsMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -172,10 +239,21 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void refresh(){
+        // refresh the label and the panel
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jb_addImage;
+    private javax.swing.JDialog jd_relations;
     private javax.swing.JLabel jl_image;
+    private javax.swing.JPanel jp_graphics;
     // End of variables declaration//GEN-END:variables
+    private Color red = Color.RED;
+    private Grafo grafo = new Grafo ();
+    private int contadorNodos = 0;
+
 }
