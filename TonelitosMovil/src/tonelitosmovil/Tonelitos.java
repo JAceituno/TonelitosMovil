@@ -162,13 +162,22 @@ public class Tonelitos extends javax.swing.JFrame {
         try {
             fw = new FileWriter(archivo, false);
             bw = new BufferedWriter(fw);
-          /*  for (int i = 0; i < nodos.size(); i++) {
-
-                bw.write(t.getCodigo() + ";");
-                bw.write(t.getNombre() + ";");
-                bw.write(t.getEdad() + ";");
+           for (int i = 0; i < contadorNodos; i++) {
+                bw.write(grafo.getNodos().elementAt(i) + "\n");
+                if (i == contadorNodos - 1) {
+                   bw.write("Aristras: \n");
+               }
+                for (int j = 0; j < grafo.getNodos().elementAt(i).getAristas().size(); j++) {
+                  bw.write( grafo.getNodos().elementAt(i).getAristas().elementAt(j) + "\n");
+                    if (j == grafo.getNodos().elementAt(i).getAristas().size() -1) {
+                        bw.write("Caminos: \n");
+                    }
+                    for (int k = 0; k < grafo.getNodos().elementAt(i).getDijkstraPath().size(); k++) {
+                        bw.write(grafo.getNodos().elementAt(i).getDijkstraPath().elementAt(k) + "\n");
+                    }
+               }
+               
             }
-            */
             bw.flush();
         } catch (Exception e) {
         } finally {
