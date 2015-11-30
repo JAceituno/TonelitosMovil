@@ -23,8 +23,11 @@ public class Node {
 
     public Node() {
         value = null;
-        coordenada.setX(-1);
-        coordenada.setY(-1);
+    }
+    
+    public Node(int x, int y){
+        value = null;
+        this.coordenada = new Coordenada(x,y);
     }
 
     public Object getValue() {
