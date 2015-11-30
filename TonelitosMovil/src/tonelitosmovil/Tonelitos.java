@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -216,9 +217,10 @@ public class Tonelitos extends javax.swing.JFrame {
         int x = evt.getX();
         int y = evt.getY();
         
-        grafo.getNodos().push_back(new Node(x-10,y-10));
-        draw.drawOval(x-10, y-10, 25, 25);
-        draw.fillOval(x-10, y-10, 25, 25);
+        grafo.getNodos().push_back(new Node(null));
+        grafo.getNodos().elementAt(grafo.getNodos().size()-1).setCoordenada(new Coordenada(x-10,y-10));
+        //draw.drawOval(x-10, y-10, 25, 25);
+        //draw.fillOval(x-10, y-10, 25, 25);
         if (evt.isMetaDown()){
             // draw.clearRect(x-10, y-10, 60, 60); no
             
@@ -234,6 +236,8 @@ public class Tonelitos extends javax.swing.JFrame {
             
             
         }
+         
+        refresh();
         
         
     }//GEN-LAST:event_jp_graphicsMouseClicked
@@ -279,13 +283,17 @@ public class Tonelitos extends javax.swing.JFrame {
     
     public void refresh(){
         // refresh the label and the panel
-        Graphics g = this.jl_image.getGraphics();
+        
+        Graphics g = this.jp_graphics.getGraphics();
+        
         
             for (int i = 0; i < grafo.getNodos().size(); i++) {
-//                g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
-  //                      grafo.getNodos().elementAt(i).getCoordenada().getY(),
-    //                    25, 25);
-                System.out.println("hola");
+                System.out.println(grafo.getNodos().size());
+                    g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+                    grafo.getNodos().elementAt(i).getCoordenada().getY(),
+                    25, 25);
+                System.out.println("X"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getX());
+                System.out.println("Y"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getY());
             }
             
        

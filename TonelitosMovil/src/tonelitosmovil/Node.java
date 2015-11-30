@@ -25,6 +25,8 @@ public class Node {
         value = null;
     }
     
+    
+    
     public Node(int x, int y){
         value = null;
         this.coordenada = new Coordenada(x,y);
