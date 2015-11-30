@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -84,7 +85,7 @@ public class Tonelitos extends javax.swing.JFrame {
         jp_graphics.setLayout(jp_graphicsLayout);
         jp_graphicsLayout.setHorizontalGroup(
             jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_graphicsLayout.createSequentialGroup()
+            .addGroup(jp_graphicsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -93,13 +94,13 @@ public class Tonelitos extends javax.swing.JFrame {
             jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_graphicsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jButton2.setText("Add Relation");
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Add Vertex");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -117,9 +118,9 @@ public class Tonelitos extends javax.swing.JFrame {
                 .addComponent(jb_addImage)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addGap(24, 24, 24))
+                .addContainerGap(162, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jp_graphics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,18 +131,13 @@ public class Tonelitos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jb_addImage)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_addImage)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -151,7 +147,6 @@ public class Tonelitos extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp", "mpg", "ico");
         chooser.setFileFilter(filter);
-        File imagen;
 
         int Okoption;
         
@@ -164,8 +159,8 @@ public class Tonelitos extends javax.swing.JFrame {
             int imgHeight = jl_image.getHeight();
             int imgWidth = jl_image.getWidth();
             
-            Image img = icon.getImage();
-            Image newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
+            img = icon.getImage();
+            newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
             jl_image.setIcon(icon);
         }
@@ -212,39 +207,28 @@ public class Tonelitos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(this, "Porfavor haga click en el mapa donde iria el nuevo vértico", "New Vertex", JOptionPane.INFORMATION_MESSAGE);
+        addVertex = true;
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private void jp_graphicsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_graphicsMouseClicked
         Graphics draw = this.jp_graphics.getGraphics();
         int x = evt.getX();
         int y = evt.getY();
         
-        grafo.getNodos().push_back(new Node(null));
-        grafo.getNodos().elementAt(grafo.getNodos().size()-1).setCoordenada(new Coordenada(x-10,y-10));
-        //draw.drawOval(x-10, y-10, 25, 25);
-        //draw.fillOval(x-10, y-10, 25, 25);
-        if (evt.isMetaDown()){
-            // draw.clearRect(x-10, y-10, 60, 60); no
+        if (addVertex){
+            grafo.getNodos().push_back(new Node(null));
+            grafo.getNodos().elementAt(grafo.getNodos().size()-1).setCoordenada(new Coordenada(x-10,y-10));
+            //draw.drawOval(x-10, y-10, 25, 25);
+            //draw.fillOval(x-10, y-10, 25, 25);
             
-        }else{
-            
-            /*
-            
-            // incluir todo esto en el metodo refresh()
-            draw.setColor(red);
-            draw.drawOval(x-10, y-10, 25, 25);
-            draw.fillOval(x-10, y-10, 25, 25);
-            */
-            
-            
-        }
-         
-        refresh();
-        
-        
-    }//GEN-LAST:event_jp_graphicsMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        refresh();
-    }//GEN-LAST:event_jButton3ActionPerformed
+            refresh();
+            addVertex = false;
+        }
+            
+    }//GEN-LAST:event_jp_graphicsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -284,17 +268,40 @@ public class Tonelitos extends javax.swing.JFrame {
     public void refresh(){
         // refresh the label and the panel
         
-        Graphics g = this.jp_graphics.getGraphics();
+        Graphics g = this.jl_image.getGraphics();
+        g.clearRect(0, 0,jl_image.getWidth(),jl_image.getHeight());
         
         
-            for (int i = 0; i < grafo.getNodos().size(); i++) {
-                System.out.println(grafo.getNodos().size());
+            if (icon !=null){
+                System.out.println("entre");
+                icon = new ImageIcon(imagen.getAbsolutePath());
+
+                int imgHeight = jl_image.getHeight();
+                int imgWidth = jl_image.getWidth();
+
+                img = icon.getImage();
+                newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
+                icon = new ImageIcon(newImg);
+                jl_image.setIcon(icon);
+                for (int i = 0; i < grafo.getNodos().size(); i++) {
                     g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
                     grafo.getNodos().elementAt(i).getCoordenada().getY(),
                     25, 25);
                 System.out.println("X"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getX());
                 System.out.println("Y"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getY());
+                }
+                
+            }else{
+                 for (int i = 0; i < grafo.getNodos().size(); i++) {
+                    g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+                    grafo.getNodos().elementAt(i).getCoordenada().getY(),
+                    25, 25);
+                System.out.println("X"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getX());
+                System.out.println("Y"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getY());
+                }
             }
+        
+            
             
        
         
@@ -318,5 +325,8 @@ public class Tonelitos extends javax.swing.JFrame {
     private Grafo grafo = new Grafo ();
     private int contadorNodos = 0;
     private ImageIcon icon=null;
+    private boolean addVertex = false;
+    private File imagen;
+    private Image img,newImg;
 
 }
