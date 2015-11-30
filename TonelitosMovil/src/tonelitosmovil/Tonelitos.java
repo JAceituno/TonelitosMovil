@@ -8,6 +8,7 @@ package tonelitosmovil;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -87,6 +88,18 @@ public class Tonelitos extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp", "mpg", "ico");
         chooser.setFileFilter(filter);
+        Icon icon;
+        File file;
+
+        int Okoption;
+        
+        Okoption = chooser.showOpenDialog(this);
+        
+        if (Okoption == JFileChooser.APPROVE_OPTION){
+            System.out.println("entre, ahora voy a asignar el icono al label");
+            this.jl_image.setIcon((Icon)chooser.getSelectedFile());
+            
+        }
     }//GEN-LAST:event_jb_addImageActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
