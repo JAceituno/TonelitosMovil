@@ -162,6 +162,76 @@ public class Grafo {
         
         return origin.getDijkstraPath();
     }
-    
+       public List FLoyd() {
+        List optimos = new List();
+        List lista;
+        List ponderaciones = new List();
+        List rows = new List();
+        Node temp = new Node();
+        for (int i = 0; i < this.nodos.size(); i++) {
+            rows.insert(i, temp);
+        }
+        for (int i = 0; i < this.nodos.size(); i++) {
+            ponderaciones.insert(i, rows);
+        }
+        //con lo superior creo la matriz
+        List caminos = ponderaciones;
+
+        for (int i = 0; i < caminos.size(); i++) {
+            for (int j = 0; j < caminos.size(); j++) {
+                ((List) caminos.elementAt(i).getValue()).elementAt(j).setValue(nodos.elementAt(j).getID());
+                // ((List) caminos.elementAt(i).getValue()).elementAt(i).setValue(0);
+            }
+        }
+
+        lista = Camino(caminos, ponderaciones);
+
+        //lleno caminos
+        //lleno 
+        return optimos;
+
+    }
+
+    private List Camino(List caminos, List ponderaciones) {
+        List lista = new List();
+        for (int i = 0; i < caminos.size(); i++) {
+            for (int j = 0; j < caminos.size(); j++) {
+                for (int k = 0; k < caminos.size(); k++) {
+                    if (((int) ((List) ponderaciones.elementAt(i).getValue()).elementAt(k).getValue())
+                            + ((int) ((List) ponderaciones.elementAt(k).getValue()).elementAt(j).getValue())
+                            < ((int) ((List) ponderaciones.elementAt(i).getValue()).elementAt(j).getValue())) {
+                        ((List) ponderaciones.elementAt(i).getValue()).elementAt(j).setValue(
+                                ((int) ((List) ponderaciones.elementAt(i).getValue()).elementAt(k).getValue())
+                                + ((int) ((List) ponderaciones.elementAt(k).getValue()).elementAt(j).getValue()));
+                        ((List) caminos.elementAt(i).getValue()).elementAt(j).setValue(k);
+                    }
+                }
+            }
+        }
+        lista.push_back(caminos);
+        lista.push_back(ponderaciones);
+        return lista;
+
+    }
+
+    private List llenar(List ponderaciones) {
+        for (int i = 0; i < ponderaciones.size(); i++) {
+            for (int j = 0; j < ponderaciones.size(); j++) {
+                ((List) ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(0);
+                for (int k = 0; k < ponderaciones.size(); k++) {
+                    if ((int)((List) ponderaciones.elementAt(i).getValue()).elementAt(j).getValue() != 0
+                        && ((Arista)nodos.elementAt(j).getAristas().elementAt(k).getValue()).getNodoFinal().getID() == j ) {
+                        ((List) ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(((Arista)nodos.elementAt(j).getAristas().elementAt(k).getValue()).getDistancia());
+                } else {
+                    ((List) ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(Integer.MAX_VALUE);
+                }
+                }
+                
+            }
+        }
+        return ponderaciones;
+    }
+
+
     
 }
