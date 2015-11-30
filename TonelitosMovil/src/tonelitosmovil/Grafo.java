@@ -237,5 +237,11 @@ public class Grafo {
         }
         return ponderaciones;
     }
+    
+    private List optimos(){
+        List optimos = new List();
+        
+        return optimos;
+    }
 
 }

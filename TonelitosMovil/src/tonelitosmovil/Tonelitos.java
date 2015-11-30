@@ -173,8 +173,13 @@ public class Tonelitos extends javax.swing.JFrame {
                         bw.write("Caminos: \n");
                     }
                     for (int k = 0; k < grafo.getNodos().elementAt(i).getDijkstraPath().size(); k++) {
+                        if (k == 0) {
+                          bw.write("Dijkstra");
+                        }
                         bw.write(grafo.getNodos().elementAt(i).getDijkstraPath().elementAt(k) + "\n");
                     }
+                    // falta floyd aqui
+                    
                }
                
             }
