@@ -100,7 +100,7 @@ public class Tonelitos extends javax.swing.JFrame {
 
         jButton2.setText("Add Relation");
 
-        jButton3.setText("Add Vertex");
+        jButton3.setText("jButton3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -118,9 +118,9 @@ public class Tonelitos extends javax.swing.JFrame {
                 .addComponent(jb_addImage)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jp_graphics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -131,13 +131,18 @@ public class Tonelitos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_addImage)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(25, 25, 25))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jb_addImage)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -216,18 +221,16 @@ public class Tonelitos extends javax.swing.JFrame {
         Graphics draw = this.jp_graphics.getGraphics();
         int x = evt.getX();
         int y = evt.getY();
-        
+
         if (addVertex){
-            grafo.getNodos().push_back(new Node(null));
+            grafo.getNodos().push_back(new Node());
             grafo.getNodos().elementAt(grafo.getNodos().size()-1).setCoordenada(new Coordenada(x-10,y-10));
             //draw.drawOval(x-10, y-10, 25, 25);
             //draw.fillOval(x-10, y-10, 25, 25);
-            
 
             refresh();
             addVertex = false;
         }
-            
     }//GEN-LAST:event_jp_graphicsMouseClicked
 
     /**
@@ -283,24 +286,16 @@ public class Tonelitos extends javax.swing.JFrame {
                 newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
                 icon = new ImageIcon(newImg);
                 jl_image.setIcon(icon);
-                for (int i = 0; i < grafo.getNodos().size(); i++) {
-                    g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
-                    grafo.getNodos().elementAt(i).getCoordenada().getY(),
-                    25, 25);
-                System.out.println("X"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getX());
-                System.out.println("Y"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getY());
-                }
                 
-            }else{
-                 for (int i = 0; i < grafo.getNodos().size(); i++) {
-                    g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+            }
+            Graphics g2 = this.jl_image.getGraphics();
+            for (int i = 0; i < grafo.getNodos().size(); i++) {
+                    g2.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
                     grafo.getNodos().elementAt(i).getCoordenada().getY(),
                     25, 25);
                 System.out.println("X"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getX());
                 System.out.println("Y"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getY());
                 }
-            }
-        
             
             
        
