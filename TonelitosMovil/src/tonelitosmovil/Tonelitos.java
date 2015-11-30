@@ -5,6 +5,9 @@
  */
 package tonelitosmovil;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -32,6 +35,7 @@ public class Tonelitos extends javax.swing.JFrame {
 
         jb_addImage = new javax.swing.JButton();
         jl_image = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,6 +46,13 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Exportar Reporte");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -49,7 +60,9 @@ public class Tonelitos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(344, 344, 344)
                 .addComponent(jb_addImage)
-                .addContainerGap(387, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(214, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -61,7 +74,9 @@ public class Tonelitos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jb_addImage)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_addImage)
+                    .addComponent(jButton1))
                 .addGap(25, 25, 25))
         );
 
@@ -70,9 +85,36 @@ public class Tonelitos extends javax.swing.JFrame {
 
     private void jb_addImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addImageActionPerformed
         JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp", "mpg","ico");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp", "mpg", "ico");
         chooser.setFileFilter(filter);
     }//GEN-LAST:event_jb_addImageActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        File archivo = new File("./reporte.txt");
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
+          /*  for (int i = 0; i < nodos.size(); i++) {
+
+                bw.write(t.getCodigo() + ";");
+                bw.write(t.getNombre() + ";");
+                bw.write(t.getEdad() + ";");
+            }
+            */
+            bw.flush();
+        } catch (Exception e) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception e) {
+            }
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,6 +152,7 @@ public class Tonelitos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jb_addImage;
     private javax.swing.JLabel jl_image;
     // End of variables declaration//GEN-END:variables
