@@ -50,8 +50,9 @@ public class Tonelitos extends javax.swing.JFrame {
         jc_final = new javax.swing.JComboBox();
         jb_addImage = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jp_graphics = new javax.swing.JPanel();
+        jp_lblparent = new javax.swing.JPanel();
         jl_image = new javax.swing.JLabel();
+        jp_graphics = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -120,28 +121,28 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
 
-        jp_graphics.addMouseListener(new java.awt.event.MouseAdapter() {
+        jp_lblparent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jp_graphicsMouseClicked(evt);
+                jp_lblparentMouseClicked(evt);
             }
         });
+        jp_lblparent.setLayout(null);
+        jp_lblparent.add(jl_image);
+        jl_image.setBounds(18, 12, 830, 579);
 
         javax.swing.GroupLayout jp_graphicsLayout = new javax.swing.GroupLayout(jp_graphics);
         jp_graphics.setLayout(jp_graphicsLayout);
         jp_graphicsLayout.setHorizontalGroup(
             jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_graphicsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 830, Short.MAX_VALUE)
         );
         jp_graphicsLayout.setVerticalGroup(
             jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_graphicsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 570, Short.MAX_VALUE)
         );
+
+        jp_lblparent.add(jp_graphics);
+        jp_graphics.setBounds(12, 12, 830, 570);
 
         jButton2.setText("Add Relation");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -173,14 +174,14 @@ public class Tonelitos extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jp_graphics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jp_lblparent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jp_lblparent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
@@ -276,7 +277,7 @@ public class Tonelitos extends javax.swing.JFrame {
         addVertex = true;
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jp_graphicsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_graphicsMouseClicked
+    private void jp_lblparentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_lblparentMouseClicked
         Graphics draw = this.jp_graphics.getGraphics();
         int x = evt.getX();
         int y = evt.getY();
@@ -294,7 +295,7 @@ public class Tonelitos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Porfavor ingrese un mapa primero","Error",JOptionPane.ERROR_MESSAGE);
             addVertex = false;
         }
-    }//GEN-LAST:event_jp_graphicsMouseClicked
+    }//GEN-LAST:event_jp_lblparentMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DefaultComboBoxModel model = new DefaultComboBoxModel();
@@ -430,6 +431,7 @@ public class Tonelitos extends javax.swing.JFrame {
     private javax.swing.JDialog jd_relations;
     private javax.swing.JLabel jl_image;
     private javax.swing.JPanel jp_graphics;
+    private javax.swing.JPanel jp_lblparent;
     // End of variables declaration//GEN-END:variables
     private Color red = Color.RED;
     private Grafo grafo = new Grafo();
