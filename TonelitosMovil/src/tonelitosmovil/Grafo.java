@@ -129,8 +129,7 @@ public class Grafo {
     public List Dijkstra(Node origin, Node destiny/*, List nodes*/) {
         List permanentes = new List();
         List notPermanents = new List();
-        origin.setDijkstraNum(0);
-        permanentes.push_back(origin);
+        
 
         for (int i = 0; i < nodos.size(); i++) {
             nodos.elementAt(i).setDijkstraNum(Integer.MAX_VALUE);
@@ -139,7 +138,11 @@ public class Grafo {
                 notPermanents.push_back(nodos.elementAt(i));
             }
         }
-        while (nodos.size() == permanentes.size()) {
+        
+        origin.setDijkstraNum(0);
+        permanentes.push_back(origin);
+        
+        while (nodos.size() != permanentes.size()) {
             Node temp = permanentes.last();
             for (int i = 0; i < temp.getAristas().size(); i++) {
                 for (int j = 0; j < permanentes.size(); j++) {
