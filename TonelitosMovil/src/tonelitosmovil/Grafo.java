@@ -100,6 +100,10 @@ public class Grafo {
             }
 
             nodos.remove(nodeIndex);
+            
+            for (int i = 0; i < nodos.size(); i++) {
+                nodos.elementAt(i).setID(i);
+            }
         } else {
             System.err.println("Index out of bounds");
         }
