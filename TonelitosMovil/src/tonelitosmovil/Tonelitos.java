@@ -45,9 +45,9 @@ public class Tonelitos extends javax.swing.JFrame {
         jd_relations = new javax.swing.JDialog();
         jc_inicial = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jc_final = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jc_final = new javax.swing.JComboBox();
         jb_addImage = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jp_graphics = new javax.swing.JPanel();
@@ -55,15 +55,16 @@ public class Tonelitos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        jc_inicial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setText("Vértice Inicial");
-
-        jc_final.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Vértice Final");
 
         jButton4.setText("Agregar Relacion");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_relationsLayout = new javax.swing.GroupLayout(jd_relations.getContentPane());
         jd_relations.getContentPane().setLayout(jd_relationsLayout);
@@ -91,12 +92,13 @@ public class Tonelitos extends javax.swing.JFrame {
                 .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jd_relationsLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(39, 39, 39)
-                        .addComponent(jc_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62))
                     .addGroup(jd_relationsLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(39, 39, 39)
-                        .addComponent(jc_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jc_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jc_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(60, 60, 60)
                 .addComponent(jButton4)
                 .addContainerGap(107, Short.MAX_VALUE))
@@ -296,13 +298,28 @@ public class Tonelitos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DefaultComboBoxModel model = new DefaultComboBoxModel();
+        DefaultComboBoxModel model2 = new DefaultComboBoxModel();
         for (int i = 0; i < grafo.getNodos().size(); i++) {
             model.addElement(grafo.getNodos().elementAt(i).getID());
+            model2.addElement(grafo.getNodos().elementAt(i).getID());
         }
         this.jc_final.setModel(model);
-        this.jc_inicial.setModel(model);
+        this.jc_inicial.setModel(model2);
         openDialog(this.jd_relations);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int indexInicial = jc_inicial.getSelectedIndex();
+        int indexFinal = jc_final.getSelectedIndex();
+        int distance;
+        if(indexFinal == indexInicial){
+            JOptionPane.showMessageDialog(this, "No puede seleccionar el mismo vértice", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            distance = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la distancia entre los vértices"));
+            grafo.getNodos().elementAt(indexInicial).getAristas().push_back(new Arista(distance,grafo.getNodos().elementAt(indexInicial),grafo.getNodos().elementAt(indexFinal)));
+            refresh();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,16 +376,35 @@ public class Tonelitos extends javax.swing.JFrame {
 
         }
         */
-        Graphics g2 = this.jl_image.getGraphics();
+        Graphics g = this.jl_image.getGraphics();
         for (int i = 0; i < grafo.getNodos().size(); i++) {
-            g2.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+            g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
                     grafo.getNodos().elementAt(i).getCoordenada().getY(),
                     25, 25);
-            g2.fillOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+            g.fillOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
                     grafo.getNodos().elementAt(i).getCoordenada().getY(),
                     25, 25);
             System.out.println("X" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getX());
-            System.out.println("Y" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getY());
+            System.out.println("Y" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getY()+"\n");
+        }
+        
+        int x1,x2,y1,y2;
+        
+        
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+            
+            for (int j = 0; j < grafo.getNodos().elementAt(i).getAristas().size(); j++) {
+                x1 = ((Arista)grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoInicial().getID();
+                y1 = ((Arista)grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoInicial().getID();
+                x2 = ((Arista)grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoFinal().getID();
+                y2 = ((Arista)grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoFinal().getID();
+                g.drawLine(grafo.getNodos().elementAt(x1).getCoordenada().getX(),
+                        grafo.getNodos().elementAt(y1).getCoordenada().getY(),
+                        grafo.getNodos().elementAt(x2).getCoordenada().getX(),
+                        grafo.getNodos().elementAt(y2).getCoordenada().getY());
+                
+            }
+            
         }
 
     }
