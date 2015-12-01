@@ -48,13 +48,18 @@ public class Tonelitos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jc_final = new javax.swing.JComboBox();
+        jd_eraseRelations = new javax.swing.JDialog();
+        jc_vertice = new javax.swing.JComboBox();
+        jButton6 = new javax.swing.JButton();
         jb_addImage = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jp_lblparent = new javax.swing.JPanel();
-        jl_image = new javax.swing.JLabel();
-        jp_graphics = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jp_graphics = new javax.swing.JPanel();
+        jl_image = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         jLabel1.setText("Vértice Inicial");
 
@@ -105,6 +110,36 @@ public class Tonelitos extends javax.swing.JFrame {
                 .addContainerGap(107, Short.MAX_VALUE))
         );
 
+        jButton6.setText("Eliminar Vértice con sus relaciones");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_eraseRelationsLayout = new javax.swing.GroupLayout(jd_eraseRelations.getContentPane());
+        jd_eraseRelations.getContentPane().setLayout(jd_eraseRelationsLayout);
+        jd_eraseRelationsLayout.setHorizontalGroup(
+            jd_eraseRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eraseRelationsLayout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(jc_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_eraseRelationsLayout.createSequentialGroup()
+                .addContainerGap(78, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(69, 69, 69))
+        );
+        jd_eraseRelationsLayout.setVerticalGroup(
+            jd_eraseRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eraseRelationsLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jc_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButton6)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jb_addImage.setText("Add Image");
@@ -127,22 +162,6 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
         jp_lblparent.setLayout(null);
-        jp_lblparent.add(jl_image);
-        jl_image.setBounds(18, 12, 830, 579);
-
-        javax.swing.GroupLayout jp_graphicsLayout = new javax.swing.GroupLayout(jp_graphics);
-        jp_graphics.setLayout(jp_graphicsLayout);
-        jp_graphicsLayout.setHorizontalGroup(
-            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
-        );
-        jp_graphicsLayout.setVerticalGroup(
-            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
-
-        jp_lblparent.add(jp_graphics);
-        jp_graphics.setBounds(12, 12, 830, 570);
 
         jButton2.setText("Add Relation");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -158,22 +177,84 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
 
+        jp_graphics.setOpaque(false);
+        jp_graphics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_graphicsMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_graphicsLayout = new javax.swing.GroupLayout(jp_graphics);
+        jp_graphics.setLayout(jp_graphicsLayout);
+        jp_graphicsLayout.setHorizontalGroup(
+            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
+        );
+        jp_graphicsLayout.setVerticalGroup(
+            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 570, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 865, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(17, 17, 17)
+                    .addComponent(jl_image, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(18, Short.MAX_VALUE)))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jl_image, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jLayeredPane1.setLayer(jp_graphics, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jl_image, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButton7.setText("Borrar relacion/ Vértice");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addGap(59, 59, 59)
+                .addComponent(jButton7)
+                .addGap(55, 55, 55)
                 .addComponent(jButton2)
-                .addGap(113, 113, 113)
+                .addGap(45, 45, 45)
                 .addComponent(jb_addImage)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(24, 24, 24))
+                .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jp_lblparent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -181,19 +262,19 @@ public class Tonelitos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jp_lblparent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jb_addImage)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jp_lblparent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 602, Short.MAX_VALUE))
+                    .addComponent(jLayeredPane1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_addImage)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton7))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -277,26 +358,6 @@ public class Tonelitos extends javax.swing.JFrame {
         addVertex = true;
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jp_lblparentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_lblparentMouseClicked
-        Graphics draw = this.jp_graphics.getGraphics();
-        int x = evt.getX();
-        int y = evt.getY();
-        
-        if (addVertex && this.jl_image.getIcon()!=null) {
-            grafo.getNodos().push_back(new Node());
-            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setCoordenada(new Coordenada(x - 10, y - 10));
-            grafo.getNodos().elementAt(grafo.getNodos().size()-1).setID(grafo.getNodos().size()-1);
-            //draw.drawOval(x-10, y-10, 25, 25);
-            //draw.fillOval(x-10, y-10, 25, 25);
-
-            refresh();
-            addVertex = false;
-        }else if (addVertex && this.jl_image.getIcon()==null){
-            JOptionPane.showMessageDialog(this, "Porfavor ingrese un mapa primero","Error",JOptionPane.ERROR_MESSAGE);
-            addVertex = false;
-        }
-    }//GEN-LAST:event_jp_lblparentMouseClicked
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         DefaultComboBoxModel model2 = new DefaultComboBoxModel();
@@ -321,6 +382,63 @@ public class Tonelitos extends javax.swing.JFrame {
             refresh();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jp_lblparentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_lblparentMouseClicked
+        Graphics draw = this.jp_graphics.getGraphics();
+        int x = evt.getX();
+        int y = evt.getY();
+
+        if (addVertex && this.jl_image.getIcon()!=null) {
+            grafo.getNodos().push_back(new Node());
+            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setCoordenada(new Coordenada(x-10, y-10 ));
+            grafo.getNodos().elementAt(grafo.getNodos().size()-1).setID(grafo.getNodos().size()-1);
+            //draw.drawOval(x-10, y-10, 25, 25);
+            //draw.fillOval(x-10, y-10, 25, 25);
+
+            refresh();
+            addVertex = false;
+        }else if (addVertex && this.jl_image.getIcon()==null){
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un mapa primero","Error",JOptionPane.ERROR_MESSAGE);
+            addVertex = false;
+        }
+    }//GEN-LAST:event_jp_lblparentMouseClicked
+
+    private void jp_graphicsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_graphicsMouseClicked
+
+        int x = evt.getX();
+        int y = evt.getY();
+
+        if (addVertex && this.jl_image.getIcon()!=null) {
+            grafo.getNodos().push_back(new Node());
+            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setCoordenada(new Coordenada(x-10, y-10));
+            grafo.getNodos().elementAt(grafo.getNodos().size()-1).setID(grafo.getNodos().size()-1);
+
+            refresh();
+            addVertex = false;
+        }else if (addVertex && this.jl_image.getIcon()==null){
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un mapa primero","Error",JOptionPane.ERROR_MESSAGE);
+            addVertex = false;
+        }
+    }//GEN-LAST:event_jp_graphicsMouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       
+        DefaultComboBoxModel model3 = new DefaultComboBoxModel();
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+          
+            model3.addElement(grafo.getNodos().elementAt(i).getID());
+        }
+
+        this.jc_vertice.setModel(model3);
+        
+        openDialog(this.jd_eraseRelations);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int index = jc_vertice.getSelectedIndex();
+        grafo.removeVertex(index);
+        refresh();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,7 +495,12 @@ public class Tonelitos extends javax.swing.JFrame {
 
         }
         */
-        Graphics g = this.jl_image.getGraphics();
+        jp_graphics.removeAll();
+        //jp_graphics.updateUI();
+        Graphics g = this.jp_graphics.getGraphics();
+        //g.clearRect(0, 0, jp_graphics.getWidth(), jp_graphics.getHeight());
+        
+        g.setColor(red);
         for (int i = 0; i < grafo.getNodos().size(); i++) {
             g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
                     grafo.getNodos().elementAt(i).getCoordenada().getY(),
@@ -399,7 +522,7 @@ public class Tonelitos extends javax.swing.JFrame {
                 y1 = ((Arista)grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoInicial().getID();
                 x2 = ((Arista)grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoFinal().getID();
                 y2 = ((Arista)grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoFinal().getID();
-                g.drawLine(grafo.getNodos().elementAt(x1).getCoordenada().getX(),
+                g.drawLine(grafo.getNodos().elementAt(x1).getCoordenada().getX()+15,
                         grafo.getNodos().elementAt(y1).getCoordenada().getY(),
                         grafo.getNodos().elementAt(x2).getCoordenada().getX(),
                         grafo.getNodos().elementAt(y2).getCoordenada().getY());
@@ -423,11 +546,16 @@ public class Tonelitos extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JButton jb_addImage;
     private javax.swing.JComboBox jc_final;
     private javax.swing.JComboBox jc_inicial;
+    private javax.swing.JComboBox jc_vertice;
+    private javax.swing.JDialog jd_eraseRelations;
     private javax.swing.JDialog jd_relations;
     private javax.swing.JLabel jl_image;
     private javax.swing.JPanel jp_graphics;
