@@ -5,8 +5,21 @@
  */
 package tonelitosmovil;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,8 +43,274 @@ public class Tonelitos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_relations = new javax.swing.JDialog();
+        jc_inicial = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jc_final = new javax.swing.JComboBox();
+        jd_eraseRelations = new javax.swing.JDialog();
+        jc_vertice = new javax.swing.JComboBox();
+        jButton6 = new javax.swing.JButton();
+        Tabla = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        Dijkstra = new javax.swing.JDialog();
+        jc_inicialDijkstra = new javax.swing.JComboBox();
+        jc_finalDijkstra = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        Floyd = new javax.swing.JDialog();
+        jc_inicialDijkstra1 = new javax.swing.JComboBox();
+        jc_finalDijkstra1 = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
         jb_addImage = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jp_lblparent = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jp_graphics = new javax.swing.JPanel();
         jl_image = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+
+        jLabel1.setText("Vértice Inicial");
+
+        jLabel2.setText("Vértice Final");
+
+        jButton4.setText("Agregar Relacion");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_relationsLayout = new javax.swing.GroupLayout(jd_relations.getContentPane());
+        jd_relations.getContentPane().setLayout(jd_relationsLayout);
+        jd_relationsLayout.setHorizontalGroup(
+            jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_relationsLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jc_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jc_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
+            .addGroup(jd_relationsLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_relationsLayout.setVerticalGroup(
+            jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_relationsLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_relationsLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(62, 62, 62))
+                    .addGroup(jd_relationsLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(39, 39, 39)
+                        .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jc_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jc_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(60, 60, 60)
+                .addComponent(jButton4)
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+
+        jButton6.setText("Eliminar Vértice con sus relaciones");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_eraseRelationsLayout = new javax.swing.GroupLayout(jd_eraseRelations.getContentPane());
+        jd_eraseRelations.getContentPane().setLayout(jd_eraseRelationsLayout);
+        jd_eraseRelationsLayout.setHorizontalGroup(
+            jd_eraseRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eraseRelationsLayout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(jc_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_eraseRelationsLayout.createSequentialGroup()
+                .addContainerGap(78, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(69, 69, 69))
+        );
+        jd_eraseRelationsLayout.setVerticalGroup(
+            jd_eraseRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eraseRelationsLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jc_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButton6)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nodo A", "Nodo B", "Distancia"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabla);
+
+        jButton8.setText("Dijkstra");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Floyd");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TablaLayout = new javax.swing.GroupLayout(Tabla.getContentPane());
+        Tabla.getContentPane().setLayout(TablaLayout);
+        TablaLayout.setHorizontalGroup(
+            TablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(TablaLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton9)
+                .addGap(129, 129, 129))
+        );
+        TablaLayout.setVerticalGroup(
+            TablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TablaLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addGroup(TablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9))
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+
+        jLabel3.setText("Nodo Inicial");
+
+        jLabel4.setText("Nodo Final");
+
+        jButton5.setText("Buscar Con Dijkstra");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout DijkstraLayout = new javax.swing.GroupLayout(Dijkstra.getContentPane());
+        Dijkstra.getContentPane().setLayout(DijkstraLayout);
+        DijkstraLayout.setHorizontalGroup(
+            DijkstraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DijkstraLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(DijkstraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jc_inicialDijkstra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGroup(DijkstraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jc_finalDijkstra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(92, 92, 92))
+            .addGroup(DijkstraLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jButton5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        DijkstraLayout.setVerticalGroup(
+            DijkstraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DijkstraLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(DijkstraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(31, 31, 31)
+                .addGroup(DijkstraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jc_inicialDijkstra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jc_finalDijkstra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76)
+                .addComponent(jButton5)
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        jLabel5.setText("Nodo Inicial");
+
+        jLabel6.setText("Nodo Final");
+
+        jButton10.setText("Buscar Con Dijkstra");
+
+        javax.swing.GroupLayout FloydLayout = new javax.swing.GroupLayout(Floyd.getContentPane());
+        Floyd.getContentPane().setLayout(FloydLayout);
+        FloydLayout.setHorizontalGroup(
+            FloydLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FloydLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(FloydLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jc_inicialDijkstra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGroup(FloydLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jc_finalDijkstra1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(92, 92, 92))
+            .addGroup(FloydLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jButton10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        FloydLayout.setVerticalGroup(
+            FloydLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FloydLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(FloydLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addGap(31, 31, 31)
+                .addGroup(FloydLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jc_inicialDijkstra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jc_finalDijkstra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76)
+                .addComponent(jButton10)
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,27 +321,146 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Exportar Reporte");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jp_lblparent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_lblparentMouseClicked(evt);
+            }
+        });
+        jp_lblparent.setLayout(null);
+
+        jButton2.setText("Add Relation");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("AddVertex");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jp_graphics.setOpaque(false);
+        jp_graphics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_graphicsMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_graphicsLayout = new javax.swing.GroupLayout(jp_graphics);
+        jp_graphics.setLayout(jp_graphicsLayout);
+        jp_graphicsLayout.setHorizontalGroup(
+            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
+        );
+        jp_graphicsLayout.setVerticalGroup(
+            jp_graphicsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 589, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 865, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap(17, Short.MAX_VALUE)
+                    .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(18, Short.MAX_VALUE)))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(17, 17, 17)
+                    .addComponent(jl_image, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(18, Short.MAX_VALUE)))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 632, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap(31, Short.MAX_VALUE)
+                    .addComponent(jp_graphics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jl_image, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jLayeredPane1.setLayer(jp_graphics, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jl_image, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButton7.setText("Borrar relacion/ Vértice");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("Buscar el Camino mas corto de un Nodo a otro");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(344, 344, 344)
-                .addComponent(jb_addImage)
-                .addContainerGap(387, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jp_lblparent, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jb_addImage)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3))
+                            .addComponent(jButton11))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jl_image, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jp_lblparent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 631, Short.MAX_VALUE))
+                    .addComponent(jLayeredPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_addImage)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
+                    .addComponent(jButton7)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
-                .addComponent(jb_addImage)
-                .addGap(25, 25, 25))
+                .addComponent(jButton11)
+                .addContainerGap())
         );
 
         pack();
@@ -70,9 +468,200 @@ public class Tonelitos extends javax.swing.JFrame {
 
     private void jb_addImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addImageActionPerformed
         JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp", "mpg","ico");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp", "mpg", "ico");
         chooser.setFileFilter(filter);
+
+        int Okoption;
+
+        Okoption = chooser.showOpenDialog(this);
+
+        if (Okoption == JFileChooser.APPROVE_OPTION) {
+            imagen = chooser.getSelectedFile();
+            icon = new ImageIcon(imagen.getAbsolutePath());
+
+            int imgHeight = jl_image.getHeight();
+            int imgWidth = jl_image.getWidth();
+
+            img = icon.getImage();
+            newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(newImg);
+            jl_image.setIcon(icon);
+        }
     }//GEN-LAST:event_jb_addImageActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File reporte = fileChooser.getSelectedFile();
+            //crear la carpeta
+            File archivo = new File(reporte.getAbsolutePath() + ".txt");
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            try {
+                fw = new FileWriter(archivo, false);
+                bw = new BufferedWriter(fw);
+                for (int i = 0; i < contadorNodos; i++) {
+                    bw.write(grafo.getNodos().elementAt(i) + "\n");
+                    if (i == contadorNodos - 1) {
+                        bw.write("Aristras: \n");
+                    }
+                    for (int j = 0; j < grafo.getNodos().elementAt(i).getAristas().size(); j++) {
+                        bw.write(grafo.getNodos().elementAt(i).getAristas().elementAt(j) + "\n");
+                        if (j == grafo.getNodos().elementAt(i).getAristas().size() - 1) {
+                            bw.write("Caminos: \n");
+                        }
+                        for (int k = 0; k < grafo.getNodos().elementAt(i).getDijkstraPath().size(); k++) {
+                            if (k == 0) {
+                                bw.write("Dijkstra");
+                            }
+                            bw.write(grafo.getNodos().elementAt(i).getDijkstraPath().elementAt(k) + "\n");
+                        }
+                        // falta floyd aqui
+
+                    }
+
+                }
+                bw.flush();
+            } catch (Exception e) {
+            } finally {
+                try {
+                    bw.close();
+                    fw.close();
+                } catch (Exception e) {
+                }
+            }
+
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(this, "Porfavor haga click en el mapa donde iria el nuevo vértice", "New Vertex", JOptionPane.INFORMATION_MESSAGE);
+        addVertex = true;
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+            model.addElement(grafo.getNodos().elementAt(i).getID());
+            model2.addElement(grafo.getNodos().elementAt(i).getID());
+        }
+        this.jc_final.setModel(model);
+        this.jc_inicial.setModel(model2);
+        openDialog(this.jd_relations);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int indexInicial = jc_inicial.getSelectedIndex();
+        int indexFinal = jc_final.getSelectedIndex();
+        int distance;
+        if (indexFinal == indexInicial) {
+            JOptionPane.showMessageDialog(this, "No puede seleccionar el mismo vértice", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            distance = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la distancia entre los vértices"));
+            grafo.getNodos().elementAt(indexInicial).getAristas().push_back(new Arista(distance, grafo.getNodos().elementAt(indexInicial), grafo.getNodos().elementAt(indexFinal)));
+            refresh();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jp_lblparentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_lblparentMouseClicked
+        Graphics draw = this.jp_graphics.getGraphics();
+        int x = evt.getX();
+        int y = evt.getY();
+
+        if (addVertex && this.jl_image.getIcon() != null) {
+            grafo.getNodos().push_back(new Node());
+            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setCoordenada(new Coordenada(x - 10, y - 10));
+            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setID(grafo.getNodos().size() - 1);
+            //draw.drawOval(x-10, y-10, 25, 25);
+            //draw.fillOval(x-10, y-10, 25, 25);
+
+            refresh();
+            addVertex = false;
+        } else if (addVertex && this.jl_image.getIcon() == null) {
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un mapa primero", "Error", JOptionPane.ERROR_MESSAGE);
+            addVertex = false;
+        }
+    }//GEN-LAST:event_jp_lblparentMouseClicked
+
+    private void jp_graphicsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_graphicsMouseClicked
+
+        int x = evt.getX();
+        int y = evt.getY();
+
+        if (addVertex && this.jl_image.getIcon() != null) {
+            grafo.getNodos().push_back(new Node());
+            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setCoordenada(new Coordenada(x - 10, y - 10));
+            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setID(grafo.getNodos().size()-1);
+
+            refresh();
+            addVertex = false;
+        } else if (addVertex && this.jl_image.getIcon() == null) {
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un mapa primero", "Error", JOptionPane.ERROR_MESSAGE);
+            addVertex = false;
+        }
+    }//GEN-LAST:event_jp_graphicsMouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+        DefaultComboBoxModel model3 = new DefaultComboBoxModel();
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+
+            model3.addElement(grafo.getNodos().elementAt(i).getID());
+        }
+
+        this.jc_vertice.setModel(model3);
+
+        openDialog(this.jd_eraseRelations);
+        refresh();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int index = jc_vertice.getSelectedIndex();
+        grafo.removeVertex(index);
+        refresh();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+            model.addElement(grafo.getNodos().elementAt(i).getID());
+            model2.addElement(grafo.getNodos().elementAt(i).getID());
+        }
+        this.jc_finalDijkstra.setModel(model);
+        this.jc_inicialDijkstra.setModel(model2);
+        openDialog(this.Dijkstra);        
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        openDialog(this.Tabla);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int indexInicial = jc_inicialDijkstra.getSelectedIndex();
+        int indexFinal = jc_finalDijkstra.getSelectedIndex();
+        
+        DefaultTableModel model = new DefaultTableModel();
+        List temp = grafo.Dijkstra(grafo.getNodos().elementAt(indexInicial), 
+                grafo.getNodos().elementAt(indexFinal));
+        
+        for (int i = 0; i < temp.size(); i++) {
+            System.out.println(temp.elementAt(i).getValue()+"");
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,8 +698,115 @@ public class Tonelitos extends javax.swing.JFrame {
         });
     }
 
+    public void refresh() {
+        // refresh the label and the panel
+
+        /*Graphics g = this.jl_image.getGraphics();
+        g.clearRect(0, 0, jl_image.getWidth(), jl_image.getHeight());
+
+        if (icon != null) {
+            System.out.println("entre");
+            icon = new ImageIcon(imagen.getAbsolutePath());
+
+            int imgHeight = jl_image.getHeight();
+            int imgWidth = jl_image.getWidth();
+
+            img = icon.getImage();
+            newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(newImg);
+            jl_image.setIcon(icon);
+
+        }
+         */
+        jp_graphics.removeAll();
+        //jp_graphics.updateUI();
+        Graphics g = this.jp_graphics.getGraphics();
+        //g.clearRect(0, 0, jp_graphics.getWidth(), jp_graphics.getHeight());
+
+        g.setColor(red);
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+            g.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+                    grafo.getNodos().elementAt(i).getCoordenada().getY(),
+                    25, 25);
+            g.fillOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+                    grafo.getNodos().elementAt(i).getCoordenada().getY(),
+                    25, 25);
+            System.out.println("X" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getX());
+            System.out.println("Y" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getY() + "\n");
+        }
+
+        int x1, x2, y1, y2;
+
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+
+            for (int j = 0; j < grafo.getNodos().elementAt(i).getAristas().size(); j++) {
+                x1 = ((Arista) grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoInicial().getID();
+                y1 = ((Arista) grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoInicial().getID();
+                x2 = ((Arista) grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoFinal().getID();
+                y2 = ((Arista) grafo.getNodos().elementAt(i).getAristas().elementAt(j).getValue()).getNodoFinal().getID();
+                g.drawLine(grafo.getNodos().elementAt(x1).getCoordenada().getX() + 15,
+                        grafo.getNodos().elementAt(y1).getCoordenada().getY(),
+                        grafo.getNodos().elementAt(x2).getCoordenada().getX(),
+                        grafo.getNodos().elementAt(y2).getCoordenada().getY());
+
+            }
+
+        }
+
+    }
+
+    public void openDialog(JDialog Dialog) {
+        Dialog.setLocationRelativeTo(this);
+        Dialog.setModal(true);
+        Dialog.pack();
+        Dialog.setVisible(true);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog Dijkstra;
+    private javax.swing.JDialog Floyd;
+    private javax.swing.JDialog Tabla;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jb_addImage;
+    private javax.swing.JComboBox jc_final;
+    private javax.swing.JComboBox jc_finalDijkstra;
+    private javax.swing.JComboBox jc_finalDijkstra1;
+    private javax.swing.JComboBox jc_inicial;
+    private javax.swing.JComboBox jc_inicialDijkstra;
+    private javax.swing.JComboBox jc_inicialDijkstra1;
+    private javax.swing.JComboBox jc_vertice;
+    private javax.swing.JDialog jd_eraseRelations;
+    private javax.swing.JDialog jd_relations;
     private javax.swing.JLabel jl_image;
+    private javax.swing.JPanel jp_graphics;
+    private javax.swing.JPanel jp_lblparent;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
+    private Color red = Color.RED;
+    private Grafo grafo = new Grafo();
+    private int contadorNodos = 0;
+    private ImageIcon icon = null;
+    private boolean addVertex = false;
+    private File imagen;
+    private Image img, newImg;
+
 }

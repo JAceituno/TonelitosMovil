@@ -88,7 +88,7 @@ public class List {
 	return new Node();
     }
     public void remove(int posicion){
-        if(size() > posicion){
+        if(size() > posicion && posicion>0){
             if(posicion == 0){
                 setHead(head.getNext());
             }
@@ -163,6 +163,15 @@ public class List {
     }
     public Node last(){
         return elementAt(size()-1);
+    }
+    
+    public List flip(List lista){
+        List flip = new List();
+        for (int i = 0; i < lista.size(); i++) {
+            flip.push_back(lista.last());
+            lista.remove(lista.size()-1);
+        }
+        return flip;
     }
     private Node head;
 }
