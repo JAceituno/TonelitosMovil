@@ -188,9 +188,8 @@ public class Grafo {
                 // ((List) caminos.elementAt(i).getValue()).elementAt(i).setValue(0);
             }
         }
-
-        lista = Camino(caminos, ponderaciones);
         ponderaciones = llenar(ponderaciones);
+        lista = Camino(caminos, ponderaciones);
 
         //lleno caminos
         //lleno 
@@ -235,16 +234,16 @@ public class Grafo {
 
             }
         }
-*/
-       // List row = new List();
+         */
+        // List row = new List();
         for (int i = 0; i < ponderaciones.size(); i++) {
             for (int m = 0; m < 10; m++) {
                 for (int j = 0; j < nodos.size(); j++) {
                     for (int k = 0; k < nodos.elementAt(j).getAristas().size(); k++) {
                         ((List) ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(0);
                         if (((Arista) nodos.elementAt(j).getAristas().elementAt(k).getValue()).getNodoFinal().getID() == m) {
-                           ((List) ponderaciones.elementAt(i).getValue()).elementAt(m).setValue(
-                           ((Arista) nodos.elementAt(j).getAristas().elementAt(k).getValue()).getDistancia());
+                            ((List) ponderaciones.elementAt(i).getValue()).elementAt(m).setValue(
+                                    ((Arista) nodos.elementAt(j).getAristas().elementAt(k).getValue()).getDistancia());
                         } else {
                             ((List) ponderaciones.elementAt(i).getValue()).elementAt(m).setValue(Integer.MAX_VALUE);
                         }
@@ -260,7 +259,7 @@ public class Grafo {
 
     private List optimos() {
         List optimos = new List();
-        // falta para floyd ocupo ayuda de aceite
+        
         return optimos;
     }
 
