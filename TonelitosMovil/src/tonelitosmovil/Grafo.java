@@ -221,7 +221,7 @@ public class Grafo {
     }
 
     private List llenar(List ponderaciones) {
-        for (int i = 0; i < ponderaciones.size(); i++) {
+        /*for (int i = 0; i < ponderaciones.size(); i++) {
             for (int j = 0; j < ponderaciones.size(); j++) {
                 ((List) ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(0);
                 for (int k = 0; k < ponderaciones.size(); k++) {
@@ -235,24 +235,23 @@ public class Grafo {
 
             }
         }
-        List row = new List();
+*/
+       // List row = new List();
         for (int i = 0; i < ponderaciones.size(); i++) {
-
-            
-            
-            
-            for (int j = 0; j < nodos.size(); j++) {
-                for (int k = 0; k < nodos.elementAt(j).getAristas().size(); k++) {
-                    ((List)ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(0);
-                    if (nodos.elementAt(i).getAristas().elementAt(i) == i) {
+            for (int m = 0; m < 10; m++) {
+                for (int j = 0; j < nodos.size(); j++) {
+                    for (int k = 0; k < nodos.elementAt(j).getAristas().size(); k++) {
+                        ((List) ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(0);
+                        if (((Arista) nodos.elementAt(j).getAristas().elementAt(k).getValue()).getNodoFinal().getID() == m) {
+                           ((List) ponderaciones.elementAt(i).getValue()).elementAt(m).setValue(
+                           ((Arista) nodos.elementAt(j).getAristas().elementAt(k).getValue()).getDistancia());
+                        } else {
+                            ((List) ponderaciones.elementAt(i).getValue()).elementAt(m).setValue(Integer.MAX_VALUE);
+                        }
 
                     }
-
                 }
             }
-            
-            
-            
 
         }
         return ponderaciones;
