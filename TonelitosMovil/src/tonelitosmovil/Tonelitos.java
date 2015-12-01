@@ -11,8 +11,10 @@ import java.awt.Image;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -41,6 +43,11 @@ public class Tonelitos extends javax.swing.JFrame {
     private void initComponents() {
 
         jd_relations = new javax.swing.JDialog();
+        jc_inicial = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jc_final = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jb_addImage = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jp_graphics = new javax.swing.JPanel();
@@ -48,15 +55,51 @@ public class Tonelitos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        jc_inicial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setText("Vértice Inicial");
+
+        jc_final.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel2.setText("Vértice Final");
+
+        jButton4.setText("Agregar Relacion");
+
         javax.swing.GroupLayout jd_relationsLayout = new javax.swing.GroupLayout(jd_relations.getContentPane());
         jd_relations.getContentPane().setLayout(jd_relationsLayout);
         jd_relationsLayout.setHorizontalGroup(
             jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_relationsLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jc_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jc_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
+            .addGroup(jd_relationsLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_relationsLayout.setVerticalGroup(
             jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_relationsLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jd_relationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_relationsLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(39, 39, 39)
+                        .addComponent(jc_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_relationsLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(39, 39, 39)
+                        .addComponent(jc_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60)
+                .addComponent(jButton4)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,8 +142,13 @@ public class Tonelitos extends javax.swing.JFrame {
         );
 
         jButton2.setText("Add Relation");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("AddVertex");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -118,7 +166,7 @@ public class Tonelitos extends javax.swing.JFrame {
                 .addComponent(jb_addImage)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
@@ -222,7 +270,7 @@ public class Tonelitos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JOptionPane.showMessageDialog(this, "Porfavor haga click en el mapa donde iria el nuevo vértico", "New Vertex", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Porfavor haga click en el mapa donde iria el nuevo vértice", "New Vertex", JOptionPane.INFORMATION_MESSAGE);
         addVertex = true;
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -230,17 +278,31 @@ public class Tonelitos extends javax.swing.JFrame {
         Graphics draw = this.jp_graphics.getGraphics();
         int x = evt.getX();
         int y = evt.getY();
-
-        if (addVertex) {
+        
+        if (addVertex && this.jl_image.getIcon()!=null) {
             grafo.getNodos().push_back(new Node());
             grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setCoordenada(new Coordenada(x - 10, y - 10));
+            grafo.getNodos().elementAt(grafo.getNodos().size()-1).setID(grafo.getNodos().size()-1);
             //draw.drawOval(x-10, y-10, 25, 25);
             //draw.fillOval(x-10, y-10, 25, 25);
 
             refresh();
             addVertex = false;
+        }else if (addVertex && this.jl_image.getIcon()==null){
+            JOptionPane.showMessageDialog(this, "Porfavor ingrese un mapa primero","Error",JOptionPane.ERROR_MESSAGE);
+            addVertex = false;
         }
     }//GEN-LAST:event_jp_graphicsMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+            model.addElement(grafo.getNodos().elementAt(i).getID());
+        }
+        this.jc_final.setModel(model);
+        this.jc_inicial.setModel(model);
+        openDialog(this.jd_relations);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,7 +342,7 @@ public class Tonelitos extends javax.swing.JFrame {
     public void refresh() {
         // refresh the label and the panel
 
-        Graphics g = this.jl_image.getGraphics();
+        /*Graphics g = this.jl_image.getGraphics();
         g.clearRect(0, 0, jl_image.getWidth(), jl_image.getHeight());
 
         if (icon != null) {
@@ -296,9 +358,13 @@ public class Tonelitos extends javax.swing.JFrame {
             jl_image.setIcon(icon);
 
         }
+        */
         Graphics g2 = this.jl_image.getGraphics();
         for (int i = 0; i < grafo.getNodos().size(); i++) {
             g2.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+                    grafo.getNodos().elementAt(i).getCoordenada().getY(),
+                    25, 25);
+            g2.fillOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
                     grafo.getNodos().elementAt(i).getCoordenada().getY(),
                     25, 25);
             System.out.println("X" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getX());
@@ -306,12 +372,25 @@ public class Tonelitos extends javax.swing.JFrame {
         }
 
     }
+    
+    public void openDialog(JDialog Dialog){
+        Dialog.setLocationRelativeTo(this);
+        Dialog.setModal(true);
+        Dialog.pack();
+        Dialog.setVisible(true);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jb_addImage;
+    private javax.swing.JComboBox jc_final;
+    private javax.swing.JComboBox jc_inicial;
     private javax.swing.JDialog jd_relations;
     private javax.swing.JLabel jl_image;
     private javax.swing.JPanel jp_graphics;
