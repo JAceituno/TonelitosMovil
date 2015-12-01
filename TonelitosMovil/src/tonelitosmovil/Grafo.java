@@ -16,8 +16,8 @@ public class Grafo {
     public Grafo(List nodos) {
         this.nodos = nodos;
     }
-    
-    public Grafo(){
+
+    public Grafo() {
         nodos = new List();
     }
 
@@ -235,12 +235,33 @@ public class Grafo {
 
             }
         }
+        List row = new List();
+        for (int i = 0; i < ponderaciones.size(); i++) {
+
+            
+            
+            
+            for (int j = 0; j < nodos.size(); j++) {
+                for (int k = 0; k < nodos.elementAt(j).getAristas().size(); k++) {
+                    ((List)ponderaciones.elementAt(i).getValue()).elementAt(i).setValue(0);
+                    if (nodos.elementAt(i).getAristas().elementAt(i) == i) {
+
+                    }
+
+                }
+            }
+            
+            
+            
+
+        }
         return ponderaciones;
+
     }
-    
-    private List optimos(){
+
+    private List optimos() {
         List optimos = new List();
-        
+        // falta para floyd ocupo ayuda de aceite
         return optimos;
     }
 
