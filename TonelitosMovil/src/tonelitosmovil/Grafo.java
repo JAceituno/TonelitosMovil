@@ -177,8 +177,8 @@ public class Grafo {
         return origin.getDijkstraPath();
     }
 
-    public List FLoyd() {
-        List optimos = new List();
+    public List FLoyd(Node origin, Node destiny) {
+        List ruta = new List();
         List lista;
         List ponderaciones = new List();
         List rows = new List();
@@ -202,8 +202,20 @@ public class Grafo {
         lista = Camino(caminos, ponderaciones);
 
         //lleno caminos
-        //lleno 
-        return optimos;
+        //lleno
+        
+        int filas = nodos.find(origin);
+        int columnas = nodos.find(destiny);
+        ruta.push_back(destiny);
+
+        while(((List)caminos.elementAt(filas).getValue()).elementAt(columnas) != nodos.elementAt(columnas)){
+            ruta.push_back(((List)caminos.elementAt(filas).getValue()).elementAt(columnas));
+            columnas = nodos.find(((List)caminos.elementAt(filas).getValue()).elementAt(columnas));
+        }
+
+        ruta.push_back(origin);
+
+        return ruta.flip(lista);
 
     }
 
