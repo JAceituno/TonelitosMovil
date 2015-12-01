@@ -160,13 +160,16 @@ public class Grafo {
                 }
             }
             long min = Integer.MAX_VALUE;
+            int delete = -1;
             for (int i = 0; i < notPermanents.size(); i++) {
+                System.out.println(notPermanents.elementAt(i).getDijkstraNum());
                 if (notPermanents.elementAt(i).getDijkstraNum() < min) {
                     min = notPermanents.elementAt(i).getDijkstraNum();
                     temp = notPermanents.elementAt(i);
+                    delete = i;
                 }
             }
-            int delete = notPermanents.find(temp);
+            System.out.println(delete);
             notPermanents.remove(delete);
             permanentes.push_back(temp);
         }

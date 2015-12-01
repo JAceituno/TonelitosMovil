@@ -88,7 +88,7 @@ public class List {
 	return new Node();
     }
     public void remove(int posicion){
-        if(size() > posicion){
+        if(size() > posicion && posicion>0){
             if(posicion == 0){
                 setHead(head.getNext());
             }
