@@ -154,16 +154,16 @@ public class Tonelitos extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
 
         int Okoption;
-        
+
         Okoption = chooser.showOpenDialog(this);
-        
-        if (Okoption == JFileChooser.APPROVE_OPTION){
+
+        if (Okoption == JFileChooser.APPROVE_OPTION) {
             imagen = chooser.getSelectedFile();
             icon = new ImageIcon(imagen.getAbsolutePath());
-            
+
             int imgHeight = jl_image.getHeight();
             int imgWidth = jl_image.getWidth();
-            
+
             img = icon.getImage();
             newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
@@ -172,41 +172,50 @@ public class Tonelitos extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_addImageActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        File archivo = new File("./reporte.txt");
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-        try {
-            fw = new FileWriter(archivo, false);
-            bw = new BufferedWriter(fw);
-           for (int i = 0; i < contadorNodos; i++) {
-                bw.write(grafo.getNodos().elementAt(i) + "\n");
-                if (i == contadorNodos - 1) {
-                   bw.write("Aristras: \n");
-               }
-                for (int j = 0; j < grafo.getNodos().elementAt(i).getAristas().size(); j++) {
-                  bw.write( grafo.getNodos().elementAt(i).getAristas().elementAt(j) + "\n");
-                    if (j == grafo.getNodos().elementAt(i).getAristas().size() -1) {
-                        bw.write("Caminos: \n");
-                    }
-                    for (int k = 0; k < grafo.getNodos().elementAt(i).getDijkstraPath().size(); k++) {
-                        if (k == 0) {
-                          bw.write("Dijkstra");
-                        }
-                        bw.write(grafo.getNodos().elementAt(i).getDijkstraPath().elementAt(k) + "\n");
-                    }
-                    // falta floyd aqui
-                    
-               }
-               
-            }
-            bw.flush();
-        } catch (Exception e) {
-        } finally {
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File reporte = fileChooser.getSelectedFile();
+            //crear la carpeta
+            File archivo = new File(reporte.getAbsolutePath()+".txt");
+            FileWriter fw = null;
+            BufferedWriter bw = null;
             try {
-                bw.close();
-                fw.close();
+                fw = new FileWriter(archivo, false);
+                bw = new BufferedWriter(fw);
+                for (int i = 0; i < contadorNodos; i++) {
+                    bw.write(grafo.getNodos().elementAt(i) + "\n");
+                    if (i == contadorNodos - 1) {
+                        bw.write("Aristras: \n");
+                    }
+                    for (int j = 0; j < grafo.getNodos().elementAt(i).getAristas().size(); j++) {
+                        bw.write(grafo.getNodos().elementAt(i).getAristas().elementAt(j) + "\n");
+                        if (j == grafo.getNodos().elementAt(i).getAristas().size() - 1) {
+                            bw.write("Caminos: \n");
+                        }
+                        for (int k = 0; k < grafo.getNodos().elementAt(i).getDijkstraPath().size(); k++) {
+                            if (k == 0) {
+                                bw.write("Dijkstra");
+                            }
+                            bw.write(grafo.getNodos().elementAt(i).getDijkstraPath().elementAt(k) + "\n");
+                        }
+                        // falta floyd aqui
+
+                    }
+
+                }
+                bw.flush();
             } catch (Exception e) {
+            } finally {
+                try {
+                    bw.close();
+                    fw.close();
+                } catch (Exception e) {
+                }
             }
+
+            
+
         }
 
         // TODO add your handling code here:
@@ -222,9 +231,9 @@ public class Tonelitos extends javax.swing.JFrame {
         int x = evt.getX();
         int y = evt.getY();
 
-        if (addVertex){
+        if (addVertex) {
             grafo.getNodos().push_back(new Node());
-            grafo.getNodos().elementAt(grafo.getNodos().size()-1).setCoordenada(new Coordenada(x-10,y-10));
+            grafo.getNodos().elementAt(grafo.getNodos().size() - 1).setCoordenada(new Coordenada(x - 10, y - 10));
             //draw.drawOval(x-10, y-10, 25, 25);
             //draw.fillOval(x-10, y-10, 25, 25);
 
@@ -267,44 +276,35 @@ public class Tonelitos extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void refresh(){
+
+    public void refresh() {
         // refresh the label and the panel
-        
+
         Graphics g = this.jl_image.getGraphics();
-        g.clearRect(0, 0,jl_image.getWidth(),jl_image.getHeight());
-        
-        
-            if (icon !=null){
-                System.out.println("entre");
-                icon = new ImageIcon(imagen.getAbsolutePath());
+        g.clearRect(0, 0, jl_image.getWidth(), jl_image.getHeight());
 
-                int imgHeight = jl_image.getHeight();
-                int imgWidth = jl_image.getWidth();
+        if (icon != null) {
+            System.out.println("entre");
+            icon = new ImageIcon(imagen.getAbsolutePath());
 
-                img = icon.getImage();
-                newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
-                icon = new ImageIcon(newImg);
-                jl_image.setIcon(icon);
-                
-            }
-            Graphics g2 = this.jl_image.getGraphics();
-            for (int i = 0; i < grafo.getNodos().size(); i++) {
-                    g2.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
+            int imgHeight = jl_image.getHeight();
+            int imgWidth = jl_image.getWidth();
+
+            img = icon.getImage();
+            newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(newImg);
+            jl_image.setIcon(icon);
+
+        }
+        Graphics g2 = this.jl_image.getGraphics();
+        for (int i = 0; i < grafo.getNodos().size(); i++) {
+            g2.drawOval(grafo.getNodos().elementAt(i).getCoordenada().getX(),
                     grafo.getNodos().elementAt(i).getCoordenada().getY(),
                     25, 25);
-                System.out.println("X"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getX());
-                System.out.println("Y"+(i+1)+": "+grafo.getNodos().elementAt(i).getCoordenada().getY());
-                }
-            
-            
-       
-        
-        
-        
-        
-        
-        
+            System.out.println("X" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getX());
+            System.out.println("Y" + (i + 1) + ": " + grafo.getNodos().elementAt(i).getCoordenada().getY());
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -317,11 +317,11 @@ public class Tonelitos extends javax.swing.JFrame {
     private javax.swing.JPanel jp_graphics;
     // End of variables declaration//GEN-END:variables
     private Color red = Color.RED;
-    private Grafo grafo = new Grafo ();
+    private Grafo grafo = new Grafo();
     private int contadorNodos = 0;
-    private ImageIcon icon=null;
+    private ImageIcon icon = null;
     private boolean addVertex = false;
     private File imagen;
-    private Image img,newImg;
+    private Image img, newImg;
 
 }
